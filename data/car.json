@@ -1,0 +1,36 @@
+[
+  {
+    "vendor": "mitsu",
+    "speed": 123,
+    "_id": "wYrey",
+    "owner": {
+      "_id": "u102",
+      "fullname": "Master Adminov"
+    },
+    "createdAt": 1702371920860
+  },
+  {
+    "_id": "D2ltJ",
+    "vendor": "fiak",
+    "speed": 46,
+    "owner": {
+      "_id": "vVm8Y",
+      "fullname": "dd",
+      "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+      "score": 10000
+    }
+  },
+  {
+    "vendor": "fiak",
+    "speed": 8,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Puki Norma",
+      "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+      "score": 10000,
+      "isAdmin": false
+    },
+    "_id": "WRsfM",
+    "createdAt": 1729620939039
+  }
+]
