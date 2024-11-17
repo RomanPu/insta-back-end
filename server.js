@@ -25,29 +25,13 @@ import { carRoutes } from './api/car/car.routes.js'
 import { userRoutes } from './api/user/user.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 
-app.use('/api/car', carRoutes)
-app.use('/api/user', userRoutes)
+// app.use('/api/car', carRoutes)
+// app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
-
-// Some example routes
-
-app.get('/', (req, res) => {
-    res.send(`<h1>Hi Express</h1>`)
-})
-
-app.get('/puki', (req, res) => {
-    let visitCount = +req.cookies.visitCount
-    console.log(visitCount);
-    res.cookie('visitCount', visitCount + 1 || 1)
-    res.send(`<h1>Hi Puki</h1>`)
-})
-
-app.get('/nono', (req, res) => {
-    res.redirect('/puki')
-})
 
 // fallback route
 app.get('/**', (req, res) => {
+    console.log('fallback route')
     res.sendFile(path.resolve('public/index.html'))
 })
 

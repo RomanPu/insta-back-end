@@ -9,7 +9,7 @@ export const carService = {
 }
 
 const PAGE_SIZE = 4
-var cars = utilService.readJsonFile('./data/car.json')
+var cars = utilService.readJsonFile('./data/post.json')
 
 async function query(filterBy = {}) {
     try {

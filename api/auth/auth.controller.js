@@ -9,7 +9,7 @@ export async function login(req, res) {
         loggerService.info('User login: ', user)
         
         const loginToken = authService.getLoginToken(user)
-        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
+        res.cookie('loginToken', loginToken)
 
         res.json(user)
     } catch (err) {
@@ -32,7 +32,7 @@ export async function signup(req, res) {
         loggerService.info('User signup:', user)
         
         const loginToken = authService.getLoginToken(user)
-        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
+        res.cookie('loginToken', loginToken)
         
         res.json(user)
     } catch (err) {

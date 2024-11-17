@@ -1,46 +1,97 @@
 [
   {
-    "_id": "u101",
-    "fullname": "Puki Norma",
-    "username": "puki",
-    "password": "123",
-    "isAdmin": false,
-    "score": 10000,
-    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+    "_id": "RRiVO",
+    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527560/houcine-ncib-B4TjXnI0Y2c-unsplash_oxevxv.jpg",
+    "name": "Emma White",
+    "username": "Emi W",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
+    "posts": [],
+    "createdAt": 1730840089500,
+    "followers": [
+      "hcZ2w",
+      "DdbAn",
+      "N8O69",
+      "ZSe08"
+    ],
+    "following": [
+      "hcZ2w"
+    ],
+    "body": "burn burn a dead channel from various people the story more or less above had was All to each time It in such cases was to I happens more or less happens each time from various people and . I happens was in such cases was each time burn to from various people had It this happened had had this happened had a dead channel . as generally each time the story a dead channel to in such cases in such cases a pleasure "
   },
   {
-    "_id": "u102",
-    "fullname": "Master Adminov",
-    "username": "admin",
-    "password": "123",
-    "isAdmin": true,
-    "score": 10000,
-    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+    "_id": "hcZ2w",
+    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527559/michael-dam-mEZ3PoFGs_k-unsplash_nourai.jpg",
+    "name": "Jane Smith",
+    "username": "jane.smith",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
+    "posts": [],
+    "createdAt": 1730894203797,
+    "followers": [
+      "DdbAn",
+      "ZSe08",
+      "N8O69",
+      "RRiVO"
+    ],
+    "following": [
+      "RRiVO",
+      "N8O69"
+    ],
+    "body": "and I had was a dead channel the color of television burn . The sky in such cases was . to happens tuned a pleasure . the color of television happens was the color of television burn above It to and I to happens a pleasure the port bit by bit . tuned and to was the port in such cases happens was . happens had a pleasure . to was above had "
   },
   {
-    "_id": "u103",
-    "fullname": "Muki G",
-    "username": "muki",
-    "password": "123",
-    "score": 10000,
-    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+    "_id": "DdbAn",
+    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527549/almos-bechtold-3402kvtHhOo-unsplash_sds10o.jpg",
+    "name": "Alice Johnson",
+    "username": "alice.johnson",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
+    "posts": [],
+    "createdAt": 1731389006213,
+    "followers": [],
+    "following": [
+      "RRiVO",
+      "hcZ2w"
+    ],
+    "body": "was it bit by bit this happened each time I burn a dead channel was to the port more or less in such cases . had it The sky and All was from various people the port It a pleasure as generally bit by bit burn the color of television a pleasure this happened . the color of television to it the story . bit by bit was I . as generally The sky All . burn this happened bit by bit happens I All "
   },
   {
-    "username": "dd",
-    "password": "$2b$10$VO7Lov5rHALkfMsfXYkoDe85ZM1W607Oq4xm0/WUhS0ThAbQgH7HC",
-    "fullname": "dd",
-    "_id": "vVm8Y",
-    "score": 10000,
-    "createdAt": 1729615650064,
-    "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+    "_id": "N8O69",
+    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527551/jonas-kakaroto-KIPqvvTOC1s-unsplash_x9enk5.jpg",
+    "name": "Bob Brown",
+    "username": "Bob.Brown",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
+    "posts": [],
+    "createdAt": 1731049691952,
+    "followers": [
+      "hcZ2w"
+    ],
+    "following": [
+      "RRiVO",
+      "hcZ2w"
+    ],
+    "body": ". in such cases and . It was more or less a dead channel this happened above bit by bit the port was a different story as generally . . It a pleasure was bit by bit a different story the color of television to the story the story it was was a different story a pleasure from various people happens above It . from various people happens and All happens was All a dead channel to tuned burn It happens to "
   },
   {
-    "username": "kiki",
-    "password": "$2b$10$czIa9iX7Ao1e/cqdu2CrWOFD8OXmc0kjAAwJLFZstCOPJWk2PhxYu",
-    "fullname": "kiki",
-    "_id": "DInS9",
+    "_id": "ZSe08",
+    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527550/albert-dera-ILip77SbmOE-unsplash_pxwrvs.jpg",
+    "name": "Charlie Black",
+    "username": "charlie.black",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
+    "posts": [],
+    "createdAt": 1730801841997,
+    "followers": [],
+    "following": [
+      "RRiVO",
+      "hcZ2w"
+    ],
+    "body": "The sky . The sky above It burn each time to was I bit by bit the story this happened . the story . a different story happens was in such cases I as generally It from various people was was to I it bit by bit in such cases each time I the color of television the color of television it from various people as generally a pleasure more or less . a pleasure more or less and was All happens a pleasure and The sky "
+  },
+  {
+    "username": "jane.s",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
+    "fullname": "roman",
+    "_id": "2Ji43",
     "score": 10000,
-    "createdAt": 1729622455846,
+    "createdAt": 1731838760694,
     "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
   }
 ]
