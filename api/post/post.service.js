@@ -51,6 +51,7 @@ async function remove(postId, user) {
 
 async function save(postToSave, user) {
     try {
+        console.log('postToSave:', postToSave)
         if (postToSave._id) {
             const idx = posts.findIndex(post => post._id === postToSave._id)
             if (idx === -1) throw `Couldn't find post with _id ${postId}`

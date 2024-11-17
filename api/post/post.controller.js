@@ -45,8 +45,9 @@ export async function removePost(req, res) {
 export async function addPost(req, res) {
     const user = req.loggedinUser
 
-    const { vendor, speed } = req.body
-    const postToSave = { vendor, speed: +speed, owner: user }
+    const { author, userId, likes, comments, createdAt, body, picUrl } = req.body
+    const postToSave = { author, userId, likes, comments, createdAt: +createdAt,
+         body, picUrl}
 
     try {
         const savedPost = await postService.save(postToSave)
