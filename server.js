@@ -21,12 +21,12 @@ app.use(cookieParser())
 
 
 // Routes
-import { carRoutes } from './api/car/car.routes.js'
+import { postRoutes } from './api/post/post.routes.js'
 import { userRoutes } from './api/user/user.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 
-// app.use('/api/car', carRoutes)
-// app.use('/api/user', userRoutes)
+app.use('/api/post', postRoutes)
+app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 
 // fallback route
