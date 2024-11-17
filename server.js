@@ -30,10 +30,10 @@ app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 
 // fallback route
-app.get('/**', (req, res) => {
-    console.log('fallback route')
-    res.sendFile(path.resolve('public/index.html'))
-})
+// app.get('/**', (req, res) => {
+//     console.log('fallback route')
+//     res.sendFile(path.resolve('public/index.html'))
+// })
 
 const PORT = process.env.PORT || 3030
 console.log(process.env.PORT)

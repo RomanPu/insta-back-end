@@ -14,20 +14,6 @@ var posts = utilService.readJsonFile('./data/post.json')
 async function query(filterBy = {}) {
     try {
         let postsToReturn = [...posts]
-        if (filterBy.txt) {
-            const regExp = new RegExp(filterBy.txt, 'i')
-            postsToReturn = postsToReturn.filter(post => regExp.test(post.vendor))
-        }
-
-        if (filterBy.minSpeed) {
-            postsToReturn = postsToReturn.filter(post => post.speed >= filterBy.minSpeed)
-        }
-
-        if (filterBy.pageIdx !== undefined) {
-            const startIdx = filterBy.pageIdx * PAGE_SIZE
-            postsToReturn = postsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
-        }
-
         return postsToReturn
     } catch (err) {
         loggerService.error(err)

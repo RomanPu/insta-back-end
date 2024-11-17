@@ -6,9 +6,9 @@ const router = express.Router()
 
 router.get('/', getPosts)
 router.get('/:postId', getPost)
-router.delete('/:postId', requireAuth, removePost)
-router.post('/', requireAuth, addPost)
-router.put('/', requireAuth, updatePost)
+router.delete('/:postId', removePost)
+router.post('/',  addPost)
+router.put('/', updatePost)
 
 
 export const postRoutes = router

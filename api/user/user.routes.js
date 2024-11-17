@@ -4,9 +4,9 @@ import { requireAuth } from '../../middlewares/require-auth.middleware.js'
 
 const router = express.Router()
 
-router.get('/', requireAuth, getUsers)
-router.get('/:id', requireAuth, getUser)
-router.put('/:id', requireAuth, updateUser)
-router.delete('/:id', requireAuth, deleteUser)
+router.get('/',  getUsers)
+router.get('/:id',  getUser)
+router.put('/:id',  updateUser)
+router.delete('/:id',  deleteUser)
 
 export const userRoutes = router
