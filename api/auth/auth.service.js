@@ -32,8 +32,10 @@ function validateToken(token) {
 }
 
 async function login(username, password) {
+    // console.log('auth.service - login with username:', username)
     var user = await userService.getByUsername(username)
     if (!user) throw 'Unkown username'
+   // console.log('auth.service - login with user:', user)
 
     //  un-comment for real login
     // const match = await bcrypt.compare(password, user.password)
@@ -43,24 +45,22 @@ async function login(username, password) {
     const miniUser = {
         _id: user._id,
         fullname: user.fullname,
-        imgUrl: user.imgUrl,
-        score: user.score,
-
-        isAdmin: user.isAdmin,
+        avatarPic: user.avatarPic,
+        username: user.username,
         // Additional fields required for miniuser
     }
     return miniUser
 }
 
-async function signup({ username, password, fullname }) {
+async function signup({ username, password, fullname, email }) {
     const saltRounds = 10
 
-    if (!username || !password || !fullname) throw 'Missing required signup information'
+    if (!username || !password || !fullname || !email) throw 'Missing required signup information'
     loggerService.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`)
 
     const userExist = await userService.getByUsername(username)
     if (userExist) throw 'Username already taken'
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.save({ username, password: hash, fullname })
+    return userService.save({ username, password: hash, fullname, email })
 }

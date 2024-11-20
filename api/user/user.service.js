@@ -52,12 +52,21 @@ async function remove(userId) {
 async function save(user) {
     // Only handles user ADD for now
     try {
-        user._id = utilService.makeId()
-        user.score = 10000
-        user.createdAt = Date.now()
-        if (!user.imgUrl) user.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-        
-        users.push(user)
+
+        if (user._id) {
+            const idx = users.findIndex(currUser => currUser._id === user._id)
+            if (idx === -1) throw `Couldn't find user with _id ${user._id}`
+            users[idx] = user
+        }else{
+            user._id = utilService.makeId()
+            user.createdAt = Date.now()    
+            user.posts = []
+            user.followers = []
+            user.following = []
+            user.body = ""
+            users.push(user)
+            
+        }
     
         await _saveUsersToFile()
         return user
