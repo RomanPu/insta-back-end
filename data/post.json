@@ -9,7 +9,17 @@
       "N8O69",
       "ZSe08"
     ],
-    "comments": [],
+    "comments": [
+      {
+        "author": "rom",
+        "body": "test",
+        "authorId": "dQ5xv",
+        "authorAvatar": "https://res.cloudinary.com/did21pz5q/image/upload/v1732185138/m3hr4ncfuhyd8q4ujvxc.jpg",
+        "createdAt": 1732197870945,
+        "likedList": [],
+        "_id": "2Jnwhb"
+      }
+    ],
     "createdAt": 1731082880179,
     "body": "Feeling grateful to be surrounded by such beauty. This little town has stolen my heart.",
     "picUrl": "https://res.cloudinary.com/did21pz5q/image/upload/v1731525581/alex-vasey-3lxrM5yvkcI-unsplash_xxb6te.jpg"
