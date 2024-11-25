@@ -11,7 +11,7 @@ export const userService = {
     getByUsername
 }
 
-async function query() {
+function query() {
     return users
 }
 

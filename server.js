@@ -3,20 +3,20 @@ import { loggerService } from './services/logger.service.js'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { Server } from 'socket.io'
+import { setupSocketAPI } from './services/socket.service.js'
 import { createServer } from 'http'
 import path from 'path'
 
 
 const app = express()
 const server = createServer(app)
-const io = new Server(server, {
-    cors: {
-        origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
-        methods: ['GET', 'POST'],
-        credentials: true
-    }
-});
+// const io = new Server(server, {
+//     cors: {
+//         origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
+//         methods: ['GET', 'POST'],
+//         credentials: true
+//     }
+// });
 
 const corsOptions = {
     origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
@@ -28,6 +28,8 @@ app.use(cors(corsOptions))
 app.use(express.static('public'))
 app.use(express.json())
 app.use(cookieParser())
+
+setupSocketAPI(server)
 
 
 // Routes
@@ -41,12 +43,6 @@ app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/notification', notificationRoutes)
 
-io.on('connection', (socket) => {
-    console.log('a user connected')
-    socket.on('notification', (notification) => {
-        console.log('notification', notification)
-    })
-})
 
 //fallback route
 app.get('/**', (req, res) => {

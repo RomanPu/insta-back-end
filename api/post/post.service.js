@@ -11,7 +11,7 @@ export const postService = {
 const PAGE_SIZE = 4
 var posts = utilService.readJsonFile('./data/post.json')
 
-async function query(filterBy = {}) {
+function query(filterBy = {}) {
     try {
         let postsToReturn = [...posts]
         return postsToReturn

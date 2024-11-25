@@ -6,14 +6,10 @@
     "likes": [
       "hcZ2w",
       "DdbAn",
-      "N8O69",
       "ZSe08",
-      "dQ5xv",
-      "dQ5xv",
-      "dQ5xv",
-      "dQ5xv",
-      "dQ5xv",
-      "dQ5xv"
+      "N8O69",
+      "N8O69",
+      "N8O69"
     ],
     "comments": [
       {
@@ -36,11 +32,28 @@
     "userId": "RRiVO",
     "likes": [
       "DdbAn",
-      "N8O69",
+      "dQ5xv",
+      "dQ5xv",
+      "dQ5xv",
+      "dQ5xv",
+      "dQ5xv",
+      "dQ5xv",
+      "dQ5xv",
       "dQ5xv",
       "dQ5xv"
     ],
-    "comments": [],
+    "comments": [
+      {
+        "author": "Bob.Brown",
+        "body": "wow amazing!!!😍",
+        "authorId": "N8O69",
+        "authorAvatar": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527551/jonas-kakaroto-KIPqvvTOC1s-unsplash_x9enk5.jpg",
+        "createdAt": 1732541766871,
+        "likedList": [],
+        "_id": "vySi90"
+      },
+      "what a bar"
+    ],
     "createdAt": 1730980756259,
     "body": "Unwind after a long day. Join us for handcrafted cocktails, fine wines, and good company. 🥃🍷 Cheers to the weekend! ",
     "picUrl": "https://res.cloudinary.com/did21pz5q/image/upload/v1731525666/shangyou-shi-VdRex9AiBOc-unsplash_ve6pnt.jpg"
@@ -49,8 +62,20 @@
     "_id": "WeSLl",
     "author": "Emi W",
     "userId": "RRiVO",
-    "likes": [],
-    "comments": [],
+    "likes": [
+      "dQ5xv"
+    ],
+    "comments": [
+      {
+        "author": "Bob.Brown",
+        "body": "yummy",
+        "authorId": "N8O69",
+        "authorAvatar": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527551/jonas-kakaroto-KIPqvvTOC1s-unsplash_x9enk5.jpg",
+        "createdAt": 1732542488833,
+        "likedList": [],
+        "_id": "uS8b1h"
+      }
+    ],
     "createdAt": 1731180218335,
     "body": "Sweet and savory perfection. Roasted plums are the perfect fall treat. 🍂🍁",
     "picUrl": "https://res.cloudinary.com/did21pz5q/image/upload/v1731525656/monika-grabkowska--1PzCC5XAzo-unsplash_rto6sq.jpg"
@@ -61,9 +86,18 @@
     "userId": "hcZ2w",
     "likes": [
       "ZSe08",
-      "N8O69"
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "N8O69",
+      "RRiVO"
     ],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1730924105395,
     "body": "Find your balance. 🧘‍♀️☀️",
@@ -74,7 +108,6 @@
     "author": "jane.smith",
     "userId": "hcZ2w",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1731252848159,
     "body": "Look at this little guy! 🐠 Who knew the underwater world could be so adorable?",
@@ -85,7 +118,6 @@
     "author": "jane.smith",
     "userId": "hcZ2w",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1731081729852,
     "body": "Burning Man was more than just a festival. It was a journey of self-discovery, connection, and radical self-expression. ✨🔥",
@@ -159,7 +191,6 @@
     "author": "jane.smith",
     "userId": "hcZ2w",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1731224742646,
     "body": "Lost in a neon jungle. 🌴✨",
@@ -170,7 +201,6 @@
     "author": "jane.smith",
     "userId": "hcZ2w",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1731026532167,
     "body": "Smell the aroma of freshly baked bread. 🍞🥐🥖",
@@ -181,7 +211,6 @@
     "author": "jane.smith",
     "userId": "hcZ2w",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1731137497269,
     "body": "Lost in the beauty of Thailand's mountains. ⛰️☁️",
@@ -255,7 +284,6 @@
     "author": "charlie.black",
     "userId": "ZSe08",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1730978241597,
     "body": "Feeling grateful to be surrounded by such beauty. This little town has stolen my heart.",
@@ -266,7 +294,6 @@
     "author": "charlie.black",
     "userId": "ZSe08",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1731310968622,
     "body": "This little guy is having a beach day too! 🐦☀️",
@@ -277,7 +304,6 @@
     "author": "charlie.black",
     "userId": "ZSe08",
     "likes": [],
-    "category": "Technology",
     "comments": [],
     "createdAt": 1730941621503,
     "body": "Lost in a neon jungle. 🌴✨",
@@ -292,5 +318,15 @@
     "createdAt": 1731858847470,
     "body": "ha ha ja",
     "picUrl": "https://res.cloudinary.com/did21pz5q/image/upload/v1731858816/ukw811i02wgplm9pznbu.jpg"
+  },
+  {
+    "_id": "iDXt8",
+    "author": "rom",
+    "userId": "dQ5xv",
+    "likes": [],
+    "comments": [],
+    "createdAt": 1732529137808,
+    "body": "great!!!!!!!!!!!",
+    "picUrl": "https://res.cloudinary.com/did21pz5q/image/upload/v1732529108/glck1b4zdgrvvamq4ecs.jpg"
   }
 ]
