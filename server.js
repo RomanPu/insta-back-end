@@ -10,13 +10,6 @@ import path from 'path'
 
 const app = express()
 const server = createServer(app)
-// const io = new Server(server, {
-//     cors: {
-//         origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
-//         methods: ['GET', 'POST'],
-//         credentials: true
-//     }
-// });
 
 const corsOptions = {
     origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
@@ -51,7 +44,6 @@ app.get('/**', (req, res) => {
 })
 
 const PORT = process.env.PORT || 3030
-console.log(process.env.PORT)
 
 server.listen(PORT, () => {
     loggerService.info('Up and running on port ' + PORT)
