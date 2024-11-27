@@ -1,18 +1,60 @@
+import { dbService } from '../../services/db.service.js'
+import { loggerService } from '../../services/logger.service.js'
+import { ObjectId } from 'mongodb'
 import Cryptr from 'cryptr'
 import bcrypt from 'bcrypt'
-
 import { userService } from '../user/user.service.js'
-import { loggerService } from '../../services/logger.service.js'
 
-const cryptr = new Cryptr(process.env.SECRET1 || 'Secret-Puk-1234')
+const cryptr = new Cryptr('mySecretKey')
 
 export const authService = {
-    getLoginToken,
-    validateToken,
+    signup,
     login,
-    signup
+    getLoginToken,
+    validateToken
 }
 
+async function signup(user) {
+    try {
+        const collection = await dbService.getCollection('user')
+        user.password = await bcrypt.hash(user.password, 10)
+        user.likes = []
+        user.followers = []
+        user.following = []
+        user.createdAt = Date.now()
+        user.posts = []
+        user.body = ''
+        user.avatarPic = ''
+        
+        await collection.insertOne(user)
+        return user
+    } catch (err) {
+        loggerService.error('authService[signup] : ', err)
+        throw err
+    }
+}
+
+async function login(username, password) {
+    try {
+        const user = await userService.getByUsername(username)
+        if (!user) throw 'Unknown username'
+
+        // const match = await bcrypt.compare(password, user.password)
+        // if (!match) throw 'Invalid username or password'
+
+        // Removing passwords and personal data
+        const miniUser = {
+            _id: user._id,
+            fullname: user.fullname,
+            avatarPic: user.avatarPic,
+            username: user.username,
+        }
+        return miniUser
+    } catch (err) {
+        loggerService.error('authService[login] : ', err)
+        throw err
+    }
+}
 
 function getLoginToken(user) {
     const str = JSON.stringify(user)
@@ -27,40 +69,6 @@ function validateToken(token) {
         return loggedinUser
     } catch (err) {
         console.log('Invalid login token')
+        return null
     }
-    return null
-}
-
-async function login(username, password) {
-    // console.log('auth.service - login with username:', username)
-    var user = await userService.getByUsername(username)
-    if (!user) throw 'Unkown username'
-   // console.log('auth.service - login with user:', user)
-
-    //  un-comment for real login
-    // const match = await bcrypt.compare(password, user.password)
-    // if (!match) throw 'Invalid username or password'
-
-    // Removing passwords and personal data
-    const miniUser = {
-        _id: user._id,
-        fullname: user.fullname,
-        avatarPic: user.avatarPic,
-        username: user.username,
-        // Additional fields required for miniuser
-    }
-    return miniUser
-}
-
-async function signup({ username, password, fullname, email }) {
-    const saltRounds = 10
-
-    if (!username || !password || !fullname || !email) throw 'Missing required signup information'
-    loggerService.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`)
-
-    const userExist = await userService.getByUsername(username)
-    if (userExist) throw 'Username already taken'
-
-    const hash = await bcrypt.hash(password, saltRounds)
-    return userService.save({ username, password: hash, fullname, email })
 }
