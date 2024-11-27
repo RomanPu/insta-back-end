@@ -1,7 +1,7 @@
 import { utilService } from '../../services/util.service.js'
 import { loggerService } from '../../services/logger.service.js'
-
-const users = utilService.readJsonFile('data/user.json')
+import { dbService } from '../../services/db.service.js'
+import { ObjectId } from 'mongodb'
 
 export const userService = {
     query,
@@ -11,14 +11,22 @@ export const userService = {
     getByUsername
 }
 
-function query() {
-    return users
+async function query(filterBy = {}) {
+    try {
+        const collection = await dbService.getCollection('user')
+        const users = await collection.find().toArray()
+        return users
+    } catch (err) {
+        loggerService.error('userService[query] : ', err)
+        throw err
+    }
 }
 
 async function getById(userId) {
     try {
-        const user = users.find(user => user._id === userId)
-        if (!user) throw `User not found by userId : ${userId}`
+        const collection = await dbService.getCollection('user')
+        const user = await collection.findOne({ _id: new ObjectId(userId) })
+        if (!user) throw `User not found by userId: ${userId}`
         return user
     } catch (err) {
         loggerService.error('userService[getById] : ', err)
@@ -28,7 +36,9 @@ async function getById(userId) {
 
 async function getByUsername(username) {
     try {
-        const user = users.find(user => user.username === username)
+        const collection = await dbService.getCollection('user')
+        const user = await collection.findOne({ username: username })
+        if (!user) throw `User not found by username: ${username}`
         return user
     } catch (err) {
         loggerService.error('userService[getByUsername] : ', err)
@@ -38,11 +48,10 @@ async function getByUsername(username) {
 
 async function remove(userId) {
     try {
-        const idx = users.findIndex(user => user._id === userId)
-        if (idx === -1) throw `Couldn't find user with _id ${causerIdrId}`
-
-        users.splice(idx, 1)
-        await _saveUsersToFile()
+        const collection = await dbService.getCollection('user')
+        const result = await collection.deleteOne({ _id: new ObjectId(userId) })
+        if (result.deletedCount === 0) throw `User not found by userId: ${userId}`
+        return result
     } catch (err) {
         loggerService.error('userService[remove] : ', err)
         throw err
@@ -50,32 +59,19 @@ async function remove(userId) {
 }
 
 async function save(user) {
-    // Only handles user ADD for now
     try {
-
+        const collection = await dbService.getCollection('user')
+        console.log('user', user)
         if (user._id) {
-            const idx = users.findIndex(currUser => currUser._id === user._id)
-            if (idx === -1) throw `Couldn't find user with _id ${user._id}`
-            users[idx] = user
-        }else{
-            user._id = utilService.makeId()
-            user.createdAt = Date.now()    
-            user.posts = []
-            user.followers = []
-            user.following = []
-            user.body = ""
-            users.push(user)
-            
+            user._id = new ObjectId(user._id)
+            await collection.updateOne({ _id: user._id }, { $set: user })
+        } else {
+            user._id = new ObjectId()
+            await collection.insertOne(user)
         }
-    
-        await _saveUsersToFile()
         return user
     } catch (err) {
         loggerService.error('userService[save] : ', err)
         throw err
     }
-}
-
-function _saveUsersToFile() {
-    return utilService.writeJsonFile('data/user.json', users)
 }

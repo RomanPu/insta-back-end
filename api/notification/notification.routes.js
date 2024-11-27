@@ -4,8 +4,8 @@ import { log } from '../../middlewares/log.middleware.js'
 
 const router = express.Router()
 
-router.get('/', log, getNotifications)
 router.get('/:id', log, getNotificationById)
+router.get('/', log, getNotifications)
 router.post('/', log, addNotification)
 router.put('/', log, markAsRead)
 

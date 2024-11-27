@@ -1,57 +1,110 @@
 [
   {
-    "_id": "RRiVO",
+    "_id": "6745d4876652dd4b3f7bc52a",
     "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527560/houcine-ncib-B4TjXnI0Y2c-unsplash_oxevxv.jpg",
-    "name": "Emma White",
-    "userName": "Emi W",
+    "fullname": "Emma White",
+    "username": "Emi W",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
     "posts": [],
     "createdAt": 1730840089500,
-    "followers": ["hcZ2w", "DdbAn", "N8O69", "ZSe08"],
-    "following": ["hcZ2w"],
+    "followers": [
+      "6745d4876652dd4b3f7bc52b",
+      "DdbAn",
+      "6745d4876652dd4b3f7bc52c",
+      "6745d4876652dd4b3f7bc52d",
+      "6745d4876652dd4b3f7bc52e",
+      "6745d4876652dd4b3f7bc52c",
+      "6745d4876652dd4b3f7bc52c",
+      "6745d4876652dd4b3f7bc52c"
+    ],
+    "following": [
+      "6745d4876652dd4b3f7bc52e",
+      "6745d4876652dd4b3f7bc52b",
+      "6745d4876652dd4b3f7bc52c"
+    ],
     "body": "burn burn a dead channel from various people the story more or less above had was All to each time It in such cases was to I happens more or less happens each time from various people and . I happens was in such cases was each time burn to from various people had It this happened had had this happened had a dead channel . as generally each time the story a dead channel to in such cases in such cases a pleasure "
   },
   {
-    "_id": "hcZ2w",
+    "_id": "6745d4876652dd4b3f7bc52b",
     "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527559/michael-dam-mEZ3PoFGs_k-unsplash_nourai.jpg",
-    "name": "Jane Smith",
-    "userName": "jane.smith",
+    "fullname": "Jane Smith",
+    "username": "jane.smith",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
     "posts": [],
     "createdAt": 1730894203797,
-    "followers": ["DdbAn", "ZSe08", "N8O69", "RRiVO"],
-    "following": ["RRiVO", "N8O69"],
+    "followers": [
+      "DdbAn",
+      "6745d4876652dd4b3f7bc52d",
+      "6745d4876652dd4b3f7bc52c",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a"
+    ],
+    "following": [
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52c"
+    ],
     "body": "and I had was a dead channel the color of television burn . The sky in such cases was . to happens tuned a pleasure . the color of television happens was the color of television burn above It to and I to happens a pleasure the port bit by bit . tuned and to was the port in such cases happens was . happens had a pleasure . to was above had "
   },
   {
-    "_id": "DdbAn",
-    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527549/almos-bechtold-3402kvtHhOo-unsplash_sds10o.jpg",
-    "name": "Alice Johnson",
-    "userName": "alice.johnson",
-    "posts": [],
-    "createdAt": 1731389006213,
-    "followers": [],
-    "following": ["RRiVO", "hcZ2w"],
-    "body": "was it bit by bit this happened each time I burn a dead channel was to the port more or less in such cases . had it The sky and All was from various people the port It a pleasure as generally bit by bit burn the color of television a pleasure this happened . the color of television to it the story . bit by bit was I . as generally The sky All . burn this happened bit by bit happens I All "
-  },
-  {
-    "_id": "N8O69",
+    "_id": "6745d4876652dd4b3f7bc52c",
     "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527551/jonas-kakaroto-KIPqvvTOC1s-unsplash_x9enk5.jpg",
-    "name": "Bob Brown",
-    "userName": "Bob.Brown",
+    "fullname": "Bob Brown",
+    "username": "Bob.Brown",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
     "posts": [],
     "createdAt": 1731049691952,
-    "followers": ["hcZ2w"],
-    "following": ["RRiVO", "hcZ2w"],
+    "followers": [
+      "6745d4876652dd4b3f7bc52b",
+      "6745d4876652dd4b3f7bc52e",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52a"
+    ],
+    "following": [
+      "6745d4876652dd4b3f7bc52b",
+      "6745d4876652dd4b3f7bc52d",
+      "6745d4876652dd4b3f7bc52a"
+    ],
     "body": ". in such cases and . It was more or less a dead channel this happened above bit by bit the port was a different story as generally . . It a pleasure was bit by bit a different story the color of television to the story the story it was was a different story a pleasure from various people happens above It . from various people happens and All happens was All a dead channel to tuned burn It happens to "
   },
   {
-    "_id": "ZSe08",
+    "_id": "6745d4876652dd4b3f7bc52d",
     "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1731527550/albert-dera-ILip77SbmOE-unsplash_pxwrvs.jpg",
-    "name": "Charlie Black",
-    "userName": "charlie.black",
+    "fullname": "Charlie Black",
+    "username": "charlie.black",
+    "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
     "posts": [],
     "createdAt": 1730801841997,
-    "followers": [],
-    "following": ["RRiVO", "hcZ2w"],
+    "followers": [
+      "6745d4876652dd4b3f7bc52c"
+    ],
+    "following": [
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52b"
+    ],
     "body": "The sky . The sky above It burn each time to was I bit by bit the story this happened . the story . a different story happens was in such cases I as generally It from various people was was to I it bit by bit in such cases each time I the color of television the color of television it from various people as generally a pleasure more or less . a pleasure more or less and was All happens a pleasure and The sky "
+  },
+  {
+    "username": "rom",
+    "password": "$2b$10$2PXeK1Y7FZmmjjU6bl03bu9mMyEILw5Q5B6rHPMP6ibtBThHT3isy",
+    "fullname": "rom",
+    "email": "romimi",
+    "_id": "6745d4876652dd4b3f7bc52e",
+    "createdAt": 1732106298423,
+    "posts": [],
+    "followers": [
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52c"
+    ],
+    "following": [
+      "6745d4876652dd4b3f7bc52a",
+      "6745d4876652dd4b3f7bc52c"
+    ],
+    "body": "I'm new to this game",
+    "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1732185138/m3hr4ncfuhyd8q4ujvxc.jpg"
   }
 ]

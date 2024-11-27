@@ -4,9 +4,7 @@ import { loggerService } from '../../services/logger.service.js';
 export async function getNotifications(req, res) {
     try {
         const {forUser} = req.query
-
         const notifications = await notificationService.getNotifications(forUser)
-        console.log('notifications', notifications)
         res.json(notifications)
     } catch (err) {
         loggerService.error('Failed to get notifications', err)
@@ -18,7 +16,6 @@ export async function addNotification(req, res) {
     try {
         const notification = req.body
         const addedNotification = await notificationService.addNotification(notification)
-        console.log('addedNotification', addedNotification)
         res.json(addedNotification)
     } catch (err) {
         loggerService.error('Failed to add notification', err)
@@ -28,8 +25,8 @@ export async function addNotification(req, res) {
 
 export async function getNotificationById(req, res) {
     try {
-        const { _id } = req.params
-        const notification = await notificationService.getNotificationById(_id)
+        const { id } = req.params
+        const notification = await notificationService.getNotificationById(id)
         res.json(notification)
     } catch (err) {
         loggerService.error('Failed to get notification by id', err)

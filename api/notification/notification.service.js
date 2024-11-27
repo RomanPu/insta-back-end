@@ -1,10 +1,8 @@
 import { utilService } from '../../services/util.service.js'
 import { loggerService } from '../../services/logger.service.js'
 import { socketService } from '../../services/socket.service.js'
-import { userService } from '../user/user.service.js'
-import { postService } from '../post/post.service.js'
-
-const notifications = utilService.readJsonFile('data/notification.json')
+import { dbService } from '../../services/db.service.js';
+import { ObjectId } from 'mongodb';
 
 export const notificationService = {
     getNotifications,
@@ -14,42 +12,127 @@ export const notificationService = {
 }
 
 async function getNotifications(forUser) {
-    console.log('forUser', forUser)
-    return notifications
-        .filter(element => element.forUser === forUser)
-        .map(element => createServerResponce(element));
-}
-
-function createServerResponce(notification){
-    const users = userService.query()
-    const posts = postService.query()
-    const byUser = users.find(user => user._id === notification.byUser)
-    const post = notification.postId ? posts.find(post => post._id === notification.postId) : ""
-    return {
-        _id: notification._id,
-        about: notification.about,
-        body: notification.body,
-        byUser: {
-            _id: byUser._id,
-            username: byUser.username,
-            avatarPic: byUser.avatarPic
+    const collection = await dbService.getCollection('notification');
+    const notifications = await collection.aggregate([
+        { $match: { forUser: new ObjectId(forUser) } },
+        {
+            $lookup: {
+                from: 'user',
+                localField: 'byUser',
+                foreignField: '_id',
+                as: 'byUserDetails'
+            }
         },
-        post: post ? {postId: post._id, picUrl: post.picUrl} : "",
-        createdAt: notification.createdAt,
-        isRead: notification.isRead
-    }
+        {
+            $lookup: {
+                from: 'post',
+                localField: 'postId',
+                foreignField: '_id',
+                as: 'postDetails'
+            }
+        },
+        {
+            $unwind: {
+                path: '$byUserDetails',
+                preserveNullAndEmptyArrays: true
+            }
+        },
+        {
+            $unwind: {
+                path: '$postDetails',
+                preserveNullAndEmptyArrays: true
+            }
+        },
+        {
+            $project: {
+                _id: 1,
+                about: 1,
+                body: 1,
+                createdAt: 1,
+                isRead: 1,
+                byUser: {
+                    _id: '$byUserDetails._id',
+                    username: '$byUserDetails.username',
+                    avatarPic: '$byUserDetails.avatarPic'
+                },
+                post: {
+                    postId: '$postDetails._id',
+                    picUrl: '$postDetails.picUrl'
+                }
+            }
+        }
+    ]).toArray()
+    return notifications
 }
-
 async function addNotification(notification) {
     try {
-        notification._id = utilService.makeId()
+        const forUser = notification.forUser
         notification.createdAt = Date.now().toString()
         notification.isRead = false
-        notifications.push(notification)
-        socketService.emitToUser({ type: 'notification', data: createServerResponce(notification), 
-            userId: notification.forUser })
-        await _saveNotificationsToFile()
-        return notification
+        notification.byUser = new ObjectId(notification.byUser) // Convert byUser to ObjectId
+        if (notification.postId) {
+            notification.postId = new ObjectId(notification.postId) // Convert postId to ObjectId if it exists
+        }
+        const collection = await dbService.getCollection('notification')
+        const { insertedId } = await collection.insertOne(notification)
+
+        notification = await collection.aggregate([
+            { $match: { _id: insertedId } },
+            {
+                $lookup: {
+                    from: 'user',
+                    localField: 'byUser',
+                    foreignField: '_id',
+                    as: 'byUserDetails'
+                }
+            },
+            {
+                $lookup: {
+                    from: 'post',
+                    localField: 'postId',
+                    foreignField: '_id',
+                    as: 'postDetails'
+                }
+            },
+            {
+                $unwind: {
+                    path: '$byUserDetails',
+                    preserveNullAndEmptyArrays: true
+                }
+            },
+            {
+                $unwind: {
+                    path: '$postDetails',
+                    preserveNullAndEmptyArrays: true
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    about: 1,
+                    body: 1,
+                    createdAt: 1,
+                    isRead: 1,
+                    byUser: {
+                        _id: '$byUserDetails._id',
+                        username: '$byUserDetails.username',
+                        avatarPic: '$byUserDetails.avatarPic'
+                    },
+                    post: {
+                        postId: '$postDetails._id',
+                        picUrl: '$postDetails.picUrl'
+                    }
+                }
+            }
+        ]).toArray()
+        console.log('notification', notification)
+        socketService.emitToUser({
+            type: 'notification',
+            data: notification[0],
+            userId: forUser
+        })
+
+        return notification[0]
     } catch (err) {
         loggerService.error('notificationService[addNotification] : ', err)
         throw err
@@ -58,7 +141,8 @@ async function addNotification(notification) {
 
 async function getNotificationById(id) {
     try {
-        const notification = notifications.find(notification => notification._id === id)
+        const collection = await dbService.getCollection('notification')        
+        const notification = await collection.findOne({ _id: ObjectId.createFromHexString(id) })
         if (!notification) throw `Notification not found by id: ${id}`
         return notification
     } catch (err) {
@@ -69,18 +153,16 @@ async function getNotificationById(id) {
 
 async function markAsRead(id) {
     try {
-        const notification = notifications.find(notification => notification._id === id)
-        if (!notification) throw `Notification not found by id: ${id}`
-        notification.isRead = true
-        await _saveNotificationsToFile()
-        return notification
+
+        const collection = await dbService.getCollection('notification')
+        await collection.updateOne(
+            { _id: ObjectId.createFromHexString(id) },
+            { $set: { isRead: true } }
+        )
+        return true
     } catch (err) {
         console.log('notificationService[markAsRead] : ', err)
         loggerService.error('notificationService[markAsRead] : ', err)
         throw err
     }
-}
-
-function _saveNotificationsToFile() {
-    return utilService.writeJsonFile('data/notification.json', notifications)
 }
