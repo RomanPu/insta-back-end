@@ -10,7 +10,7 @@ if ( process.env.NODE_ENV === 'production') {
   config = configProd
   console.log('configProd', configProd)
 } else {
-  config = configDev
+  config = configProd
   console.log('configDev', process.env.NODE_ENV )
 }
 // config.isGuestMode = true
