@@ -63,7 +63,6 @@ async function getNotifications(forUser) {
             }
         }
     ]).toArray()
-    console.log('notifications', notifications)
     return notifications
 }
 async function addNotification(notification) {
@@ -127,7 +126,6 @@ async function addNotification(notification) {
                 }
             }
         ]).toArray()
-        console.log('notification', notification)
         socketService.emitToUser({
             type: 'notification',
             data: notification[0],

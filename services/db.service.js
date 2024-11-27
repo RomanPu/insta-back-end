@@ -19,6 +19,7 @@ async function getCollection(collectionName) {
 }
 
 async function _connect() {
+	console.log('Connecting to DB',config.dbURL)
 	if (dbConn) return dbConn
     
 	try {
