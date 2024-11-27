@@ -13,8 +13,9 @@ export const notificationService = {
 
 async function getNotifications(forUser) {
     const collection = await dbService.getCollection('notification');
+
     const notifications = await collection.aggregate([
-        { $match: { forUser: new ObjectId(forUser) } },
+        { $match: { forUser: forUser } },
         {
             $lookup: {
                 from: 'user',
@@ -62,6 +63,7 @@ async function getNotifications(forUser) {
             }
         }
     ]).toArray()
+    console.log('notifications', notifications)
     return notifications
 }
 async function addNotification(notification) {
