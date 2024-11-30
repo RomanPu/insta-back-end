@@ -13,7 +13,9 @@ export async function getUser(req, res) {
 
 export async function getUsers(req, res) {
     try {
-        const users = await userService.query()
+        const username = req.query.username
+        console.log('username:',  req.query, username)
+        const users = await userService.query(username)
         res.send(users)
     } catch (err) {
         loggerService.error('Failed to get users', err)

@@ -11,10 +11,10 @@ export const userService = {
     getByUsername
 }
 
-async function query(filterBy = {}) {
+async function query(username = '') {
     try {
         const collection = await dbService.getCollection('user')
-        const users = await collection.find().toArray()
+        const users = await collection.find({ username: { $regex: username, $options: 'i' } }).toArray()
         return users
     } catch (err) {
         loggerService.error('userService[query] : ', err)
