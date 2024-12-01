@@ -25,6 +25,7 @@ async function signup(user) {
         user.posts = []
         user.body = ''
         user.avatarPic = ''
+        user.conversations = []
         
         await collection.insertOne(user)
         return user
@@ -48,6 +49,7 @@ async function login(username, password) {
             fullname: user.fullname,
             avatarPic: user.avatarPic,
             username: user.username,
+            conversations: user.conversations
         }
         return miniUser
     } catch (err) {
