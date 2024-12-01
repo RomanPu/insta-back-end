@@ -30,11 +30,13 @@ import { postRoutes } from './api/post/post.routes.js'
 import { userRoutes } from './api/user/user.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 import { notificationRoutes } from './api/notification/notification.routes.js'
+import { messageRoutes } from './api/message/message.routes.js'
 
 app.use('/api/post', postRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/notification', notificationRoutes)
+app.use('/api/message', messageRoutes)
 
 
 //fallback route
