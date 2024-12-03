@@ -10,88 +10,68 @@ export const messageService = {
 }
 
 async function getMessages(byUser) {
-    console.log(byUser);
-    console.log(new ObjectId(byUser));
     const collection = await dbService.getCollection('message');
     const messages = await collection.aggregate([
-        { $match: { owner: new ObjectId(byUser) } },
+        { $match: { correspandents: { $in: [new ObjectId(byUser)] } } },
         {
             $lookup: {
                 from: 'user',
-                localField: 'correspandent',
+                localField: 'correspandents',
                 foreignField: '_id',
                 as: 'correspandentDetails'
             }
         },
         {
             $unwind: {
-                path: '$ownerDetails',
+                path: '$correspandentDetails',
                 preserveNullAndEmptyArrays: true
+            }
+        },
+        {
+            $group: {
+                _id: '$_id',
+                messages: { $first: '$messages' },
+                createdAt: { $first: '$createdAt' },
+                isRead: { $first: '$isRead' },
+                correspandents: { $push: '$correspandentDetails' }
             }
         },
         {
             $project: {
                 _id: 1,
-                body: 1,
                 createdAt: 1,
                 isRead: 1,
-                Byuser: 1,
-                correspandent: {
-                    fullname: '$correspandentDetails.fullname',
-                    username: '$correspandentDetails.username',
-                    avatarPic: '$correspandentDetails.avatarPic'
+                messages: 1,
+                correspandents: {
+                    _id: 1,
+                    fullname: 1,
+                    username: 1,
+                    avatarPic: 1
                 }
             }
         }
-    ]).toArray()
+    ]).toArray();
+    console.log("byUser", byUser);
+    // const collection = await dbService.getCollection('message');
+    // const messages = await collection.aggregate([
+    //     { $match: { correspandents: { $in: [new ObjectId(byUser)] } } }
+    // ]).toArray();
 
-    return messages
+    console.log("messages", messages);
+    return messages;
 }
 
 async function addMessage(message) {
     try {
         message.createdAt = Date.now().toString();
-        message.isRead = false;
-        message.owner = new ObjectId(message.owner); 
-        message.byUser = new ObjectId(message.byUser);
-        message.correspandent = new ObjectId(message.correspandent); 
+        message.correspandents = message.correspandents.map(correspandent => new ObjectId(correspandent));
+        message.isRead = message.correspandents.map(correspandent => ({ id: correspandent, isRead: false }));
+        message.messages = []; 
 
         const collection = await dbService.getCollection('message');
         const { insertedId } = await collection.insertOne(message);
 
-        message = await collection.aggregate([
-            { $match: { _id: insertedId } },
-            {
-                $lookup: {
-                    from: 'user',
-                    localField: 'correspandent',
-                    foreignField: '_id',
-                    as: 'correspandentDetails'
-                }
-            },
-            {
-                $unwind: {
-                    path: '$ownerDetails',
-                    preserveNullAndEmptyArrays: true
-                }
-            },
-            {
-                $project: {
-                    _id: 1,
-                    body: 1,
-                    createdAt: 1,
-                    isRead: 1,
-                    Byuser: 1,
-                    correspandent: {
-                        fullname: '$correspandentDetails.fullname',
-                        username: '$correspandentDetails.username',
-                        avatarPic: '$correspandentDetails.avatarPic'
-                    }
-                }
-            }
-        ]).toArray();
-
-        return message[0];
+        return insertedId;
     } catch (err) {
         loggerService.error('messageService[addMessage] : ', err);
         throw err;
@@ -99,11 +79,51 @@ async function addMessage(message) {
 }
 
 async function getMessageById(id) {
+    console.log("getby",id);
     try {
         const collection = await dbService.getCollection('message');
-        const message = await collection.findOne({ _id: new ObjectId(id) });
-        if (!message) throw `Message not found by id: ${id}`;
-        return message;
+        const messages = await collection.aggregate([
+            { $match: { _id: new ObjectId(id) } },
+            {
+                $lookup: {
+                    from: 'user',
+                    localField: 'correspandents',
+                    foreignField: '_id',
+                    as: 'correspandentDetails'
+                }
+            },
+            {
+                $unwind: {
+                    path: '$correspandentDetails',
+                    preserveNullAndEmptyArrays: true
+                }
+            },
+            {
+                $group: {
+                    _id: '$_id',
+                    messages: { $first: '$messages' },
+                    createdAt: { $first: '$createdAt' },
+                    isRead: { $first: '$isRead' },
+                    correspandents: { $push: '$correspandentDetails' }
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    createdAt: 1,
+                    isRead: 1,
+                    messages: 1,
+                    correspandents: {
+                        _id: 1,
+                        fullname: 1,
+                        username: 1,
+                        avatarPic: 1
+                    }
+                }
+            }
+        ]).toArray();
+
+        return messages[0];
     } catch (err) {
         loggerService.error('messageService[getMessageById] : ', err);
         throw err;
