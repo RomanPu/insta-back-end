@@ -51,13 +51,11 @@ async function getMessages(byUser) {
             }
         }
     ]).toArray();
-    console.log("byUser", byUser);
-    // const collection = await dbService.getCollection('message');
-    // const messages = await collection.aggregate([
-    //     { $match: { correspandents: { $in: [new ObjectId(byUser)] } } }
-    // ]).toArray();
 
-    console.log("messages", messages);
+
+    messages.forEach(msg => {
+        msg.correspandents = msg.correspandents.filter(correspandent => correspandent._id.toString() !== byUser);
+    });
     return messages;
 }
 
@@ -123,7 +121,7 @@ async function getMessageById(id) {
             }
         ]).toArray();
 
-        return messages[0];
+        return messages[0]
     } catch (err) {
         loggerService.error('messageService[getMessageById] : ', err);
         throw err;
