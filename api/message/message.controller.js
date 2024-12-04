@@ -34,13 +34,14 @@ export async function getMessageById(req, res) {
     }
 }
 
-export async function markAsRead(req, res) {
+export async function editMessage(req, res) {
+    console.log('req.body:', req.body)
     try {
-        const { id } = req.body
-        const updatedMessage = await messageService.markAsRead(id)
+        const  msg  = req.body
+        const updatedMessage = await messageService.editMessage(msg)
         res.json(updatedMessage)
     } catch (err) {
-        loggerService.error('Failed to mark message as read', err)
-        res.status(500).send({ err: 'Failed to mark message as read' })
+        loggerService.error('Failed to edit message', err)
+        res.status(500).send({ err: 'Failed to edit message' })
     }
 }

@@ -6,10 +6,13 @@ export const messageService = {
     getMessages,
     addMessage,
     getMessageById,
-    markAsRead
+    editMessage
 }
 
 async function getMessages(byUser) {
+
+    let t;
+    console.log( new ObjectId(t));
     const collection = await dbService.getCollection('message');
     const messages = await collection.aggregate([
         { $match: { correspandents: { $in: [new ObjectId(byUser)] } } },
@@ -52,10 +55,6 @@ async function getMessages(byUser) {
         }
     ]).toArray();
 
-
-    messages.forEach(msg => {
-        msg.correspandents = msg.correspandents.filter(correspandent => correspandent._id.toString() !== byUser);
-    });
     return messages;
 }
 
@@ -128,17 +127,19 @@ async function getMessageById(id) {
     }
 }
 
-async function markAsRead(id) {
+async function editMessage(msg) {
     try {
+        msg.correspandents = msg.correspandents.map(correspandent => new ObjectId(correspandent._id));
+        msg._id = new ObjectId(msg._id);
         const collection = await dbService.getCollection('message');
         const result = await collection.updateOne(
-            { _id: new ObjectId(id) },
-            { $set: { isRead: true } }
+            { _id: msg._id },
+            { $set: msg }
         );
         if (result.matchedCount === 0) throw `Message not found by id: ${id}`;
         return true;
     } catch (err) {
-        loggerService.error('messageService[markAsRead] : ', err);
+        loggerService.error('messageService[updateMessage] : ', err);
         throw err;
     }
 }
