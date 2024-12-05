@@ -5,7 +5,8 @@ import { Server } from 'socket.io'
 export const socketService = {
 
     setupSocketAPI,
-    emitToUser
+    emitToUser,
+    emitToUsers
 }
 
 var gIo = null
@@ -49,6 +50,21 @@ async function emitToUser({ type, data, userId }) {
         loggerService.info(`No active socket for user: ${userId}`)
         // _printSockets()
     }
+}
+
+async function emitToUsers({ type, data, userIds }) {
+    // console.log('userIds', userIds)
+    // console.log(data)
+
+    userIds.forEach(async userId => { 
+        const socket = await _getUserSocket(userId)
+        if (socket) {
+            loggerService.info(`Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
+            socket.emit(type, data)
+        } else {
+            loggerService.info(`No active socket for user: ${userId}`)
+        }
+    })
 }
 
 async function _getUserSocket(userId) {

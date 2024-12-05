@@ -1,6 +1,7 @@
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
 import { ObjectId } from 'mongodb'
+import { socketService } from '../../services/socket.service.js'
 
 export const messageService = {
     getMessages,
@@ -67,6 +68,7 @@ async function addMessage(message) {
 
         const collection = await dbService.getCollection('message');
         const { insertedId } = await collection.insertOne(message);
+        socketService.emitToUsers("message", insertedId, message.correspandents.map(correspandent => correspandent.id.toString()));
 
         return insertedId;
     } catch (err) {
@@ -137,6 +139,8 @@ async function editMessage(msg) {
             { $set: msg }
         );
         if (result.matchedCount === 0) throw `Message not found by id: ${id}`;
+        socketService.emitToUsers({type:'messeage', data:  msg._id.toString(), userIds:
+            msg.correspandents.map(correspandent => correspandent.toString())});
         return true;
     } catch (err) {
         loggerService.error('messageService[updateMessage] : ', err);

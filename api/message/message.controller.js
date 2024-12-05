@@ -35,7 +35,6 @@ export async function getMessageById(req, res) {
 }
 
 export async function editMessage(req, res) {
-    console.log('req.body:', req.body)
     try {
         const  msg  = req.body
         const updatedMessage = await messageService.editMessage(msg)
