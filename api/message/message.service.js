@@ -10,11 +10,45 @@ export const messageService = {
     editMessage
 }
 
-async function getMessages(byUser) {
+async function getMessages(byUser, isRead) {
 
-    let t;
-    console.log( new ObjectId(t));
-    const collection = await dbService.getCollection('message');
+    const collection = await dbService.getCollection('message'); 
+    if (isRead) {
+        const unreadMessages = await collection.aggregate([
+            {
+                $match: {
+                    isRead: {
+                        $elemMatch: {
+                            id: new ObjectId(byUser),
+                            isRead: false
+                        }
+                    }
+                }
+            },
+            {
+                $lookup: {
+                    from: 'user',
+                    localField: 'correspandents',
+                    foreignField: '_id',
+                    as: 'correspandentDetails'
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    messages: 1,
+                    createdAt: 1,
+                    isRead: 1,
+                    correspandents: '$correspandentDetails'
+                }
+            }
+        ]).toArray();
+        
+        return unreadMessages.length;
+    }
+    // Rest of the existing getMessages function...
+
+      
     const messages = await collection.aggregate([
         { $match: { correspandents: { $in: [new ObjectId(byUser)] } } },
         {
@@ -59,18 +93,36 @@ async function getMessages(byUser) {
     return messages;
 }
 
-async function addMessage(message) {
+async function addMessage(message, user) {
+    //console.log("add",message);
+    console.log("user",user);
     try {
         message.createdAt = Date.now().toString();
         message.correspandents = message.correspandents.map(correspandent => new ObjectId(correspandent));
         message.isRead = message.correspandents.map(correspandent => ({ id: correspandent, isRead: false }));
         message.messages = []; 
 
+        message.isRead.forEach(isRead => {
+            if (isRead.id.equals(user._id)) {
+                isRead.isRead = true;
+            } else {
+                isRead.isRead = false;
+            }
+        });
+
+        console.log("message",message.isRead);
+
         const collection = await dbService.getCollection('message');
         const { insertedId } = await collection.insertOne(message);
-        socketService.emitToUsers("message", insertedId, message.correspandents.map(correspandent => correspandent.id.toString()));
 
-        return insertedId;
+            const savadMsg = await getMessageById(insertedId);
+    //    console.log("insertedId",message.correspandents.map(correspandent => correspandent.toString()));
+   //     socketService.emitToUsers({type: "add-message",data: insertedId, userIds: savadMsg.correspandents.map(correspandent => correspandent.toString())});
+        socketService.emitToUsers({type:'add-message', data:  message._id, userIds:
+            message.correspandents.filter(correspandent => !correspandent.equals(user._id))
+            .map(correspandent => correspandent.toString())})
+        message._id = insertedId;
+        return savadMsg
     } catch (err) {
         loggerService.error('messageService[addMessage] : ', err);
         throw err;
@@ -78,7 +130,6 @@ async function addMessage(message) {
 }
 
 async function getMessageById(id) {
-    console.log("getby",id);
     try {
         const collection = await dbService.getCollection('message');
         const messages = await collection.aggregate([
@@ -129,8 +180,14 @@ async function getMessageById(id) {
     }
 }
 
-async function editMessage(msg) {
+async function editMessage(msg, user) {
     try {
+        // msg.isRead.forEach(isRead => {
+        //     if (isRead.id === user._id) isRead.isRead = true
+        //     else isRead.isRead = false
+        // });
+
+
         msg.correspandents = msg.correspandents.map(correspandent => new ObjectId(correspandent._id));
         msg._id = new ObjectId(msg._id);
         const collection = await dbService.getCollection('message');
@@ -139,9 +196,10 @@ async function editMessage(msg) {
             { $set: msg }
         );
         if (result.matchedCount === 0) throw `Message not found by id: ${id}`;
-        socketService.emitToUsers({type:'messeage', data:  msg._id.toString(), userIds:
-            msg.correspandents.map(correspandent => correspandent.toString())});
-        return true;
+        socketService.emitToUsers({type:'edit-message', data:  msg._id, userIds:
+            msg.correspandents.filter(correspandent => !correspandent.equals(user._id))
+            .map(correspandent => correspandent.toString())})
+        return msg;
     } catch (err) {
         loggerService.error('messageService[updateMessage] : ', err);
         throw err;

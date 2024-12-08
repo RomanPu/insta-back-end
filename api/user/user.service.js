@@ -61,7 +61,6 @@ async function remove(userId) {
 async function save(user) {
     try {
         const collection = await dbService.getCollection('user')
-        console.log('user', user)
         if (user._id) {
             user._id = new ObjectId(user._id)
             await collection.updateOne({ _id: user._id }, { $set: user })

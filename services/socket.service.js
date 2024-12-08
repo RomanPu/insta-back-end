@@ -53,8 +53,8 @@ async function emitToUser({ type, data, userId }) {
 }
 
 async function emitToUsers({ type, data, userIds }) {
-    // console.log('userIds', userIds)
-    // console.log(data)
+    console.log('userIds', userIds)
+    console.log(data)
 
     userIds.forEach(async userId => { 
         const socket = await _getUserSocket(userId)
@@ -66,6 +66,7 @@ async function emitToUsers({ type, data, userIds }) {
         }
     })
 }
+
 
 async function _getUserSocket(userId) {
     const sockets = await _getAllSockets()

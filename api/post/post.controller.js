@@ -5,6 +5,7 @@ import { postService } from './post.service.js'
 
 export async function getPosts(req, res) {
     try {
+
         const filterBy = {
             txt: req.query.txt || '',
             minSpeed: +req.query.minSpeed || 0,

@@ -1,10 +1,11 @@
 import { messageService } from './message.service.js'
 import { loggerService } from '../../services/logger.service.js'
+import { signedCookie } from 'cookie-parser'
 
 export async function getMessages(req, res) {
     try {
-        const { forUser } = req.query
-        const messages = await messageService.getMessages(forUser)
+        const { byUser, isRead } = req.query
+        const messages = await messageService.getMessages(byUser, isRead)
         res.json(messages)
     } catch (err) {
         loggerService.error('Failed to get messages', err)
@@ -15,7 +16,7 @@ export async function getMessages(req, res) {
 export async function addMessage(req, res) {
     try {
         const message = req.body
-        const addedMessage = await messageService.addMessage(message)
+        const addedMessage = await messageService.addMessage(message, req.loggedinUser) 
         res.json(addedMessage)
     } catch (err) {
         loggerService.error('Failed to add message', err)
@@ -37,7 +38,7 @@ export async function getMessageById(req, res) {
 export async function editMessage(req, res) {
     try {
         const  msg  = req.body
-        const updatedMessage = await messageService.editMessage(msg)
+        const updatedMessage = await messageService.editMessage(msg, req.loggedinUser)
         res.json(updatedMessage)
     } catch (err) {
         loggerService.error('Failed to edit message', err)
