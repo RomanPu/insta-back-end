@@ -8,7 +8,7 @@
       "6745d4876652dd4b3f7bc52d",
       "6745d4876652dd4b3f7bc52c"
     ],
-    "comments": [ ],
+    "comments": [],
     "createdAt": 1731082880179,
     "body": "Feeling grateful to be surrounded by such beauty. This little town has stolen my heart.",
     "picUrl": "https://res.cloudinary.com/did21pz5q/image/upload/v1731525581/alex-vasey-3lxrM5yvkcI-unsplash_xxb6te.jpg"
@@ -48,10 +48,7 @@
   {
     "author": "Emi W",
     "userId": "6745d4876652dd4b3f7bc52a",
-    "likes": [
-      "6745d4876652dd4b3f7bc52e",
-      "6745d4876652dd4b3f7bc52c"
-    ],
+    "likes": ["6745d4876652dd4b3f7bc52e", "6745d4876652dd4b3f7bc52c"],
     "comments": [
       {
         "author": "Bob.Brown",
@@ -83,9 +80,7 @@
   {
     "author": "jane.smith",
     "userId": "6745d4876652dd4b3f7bc52b",
-    "likes": [
-      "6745d4876652dd4b3f7bc52c"
-    ],
+    "likes": ["6745d4876652dd4b3f7bc52c"],
     "comments": [],
     "createdAt": 1731252848159,
     "body": "Look at this little guy! 🐠 Who knew the underwater world could be so adorable?",

@@ -39,10 +39,7 @@
       "6745d4876652dd4b3f7bc52a",
       "6745d4876652dd4b3f7bc52a"
     ],
-    "following": [
-      "6745d4876652dd4b3f7bc52a",
-      "6745d4876652dd4b3f7bc52c"
-    ],
+    "following": ["6745d4876652dd4b3f7bc52a", "6745d4876652dd4b3f7bc52c"],
     "body": "and I had was a dead channel the color of television burn . The sky in such cases was . to happens tuned a pleasure . the color of television happens was the color of television burn above It to and I to happens a pleasure the port bit by bit . tuned and to was the port in such cases happens was . happens had a pleasure . to was above had "
   },
   {
@@ -79,13 +76,8 @@
     "password": "$2b$10$KA9eKVkdHasKU8xayBadIugEjUCUp7/XjPQy3AExMbsXfD1x8R9Dq",
     "posts": [],
     "createdAt": 1730801841997,
-    "followers": [
-      "6745d4876652dd4b3f7bc52c"
-    ],
-    "following": [
-      "6745d4876652dd4b3f7bc52a",
-      "6745d4876652dd4b3f7bc52b"
-    ],
+    "followers": ["6745d4876652dd4b3f7bc52c"],
+    "following": ["6745d4876652dd4b3f7bc52a", "6745d4876652dd4b3f7bc52b"],
     "body": "The sky . The sky above It burn each time to was I bit by bit the story this happened . the story . a different story happens was in such cases I as generally It from various people was was to I it bit by bit in such cases each time I the color of television the color of television it from various people as generally a pleasure more or less . a pleasure more or less and was All happens a pleasure and The sky "
   },
   {
@@ -96,14 +88,8 @@
     "_id": "6745d4876652dd4b3f7bc52e",
     "createdAt": 1732106298423,
     "posts": [],
-    "followers": [
-      "6745d4876652dd4b3f7bc52a",
-      "6745d4876652dd4b3f7bc52c"
-    ],
-    "following": [
-      "6745d4876652dd4b3f7bc52a",
-      "6745d4876652dd4b3f7bc52c"
-    ],
+    "followers": ["6745d4876652dd4b3f7bc52a", "6745d4876652dd4b3f7bc52c"],
+    "following": ["6745d4876652dd4b3f7bc52a", "6745d4876652dd4b3f7bc52c"],
     "body": "I'm new to this game",
     "avatarPic": "https://res.cloudinary.com/did21pz5q/image/upload/v1732185138/m3hr4ncfuhyd8q4ujvxc.jpg"
   }

@@ -1,4 +1,4 @@
 export default {
-  dbURL: 'mongodb://localhost:27017',
-  dbName : 'local-data'
-}
+  dbURL: "mongodb://localhost:27017",
+  dbName: "local-data",
+};
