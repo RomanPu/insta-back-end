@@ -15,7 +15,7 @@ export const postService = {
 async function query(filterBy = {}) {
   try {
     const collection = await dbService.getCollection("post");
-    const posts = await collection.find().toArray();
+    const posts = await collection.find().sort({ createdAt: -1 }).toArray();
     return posts;
   } catch (err) {
     loggerService.error("postService[query] : ", err);
