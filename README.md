@@ -35,8 +35,6 @@ The Instagram Home page is the central hub where users can view posts from the a
 
 ![App Screenshot](public/img/readme/feed-view.png)
 
-##Post Deteild View
-
 ## Post Detailed View
 
 The Post Detailed View provides an in-depth look at individual posts. Users can see the full content of a post, including the caption, comments, and likes. This view allows users to engage more deeply by liking, commenting, and sharing the post. Additionally, users can see who has liked the post and view the profiles of those who have interacted with it. The Post Detailed View enhances user interaction by providing a comprehensive view of each post's engagement.
@@ -68,9 +66,9 @@ The Mobile Layout is designed to provide a seamless and intuitive user experienc
 <div style="display: flex;
  justify-content: space-between;
  margin-top: 50px;">
-  <img src="public/img/readme/m-layout1.png" alt="Feed View" style="width: 33%;">
-  <img src="public/img/readme/m-layout2.png" alt="Detailed View" style="width: 33%;">
-  <img src="public/img/readme/m-layout3.png" alt="Profile View" style="width: 33%;">
+  <img src="public/img/readme/m-layout1.png" alt="Feed View" style="width: 30%;">
+  <img src="public/img/readme/m-layout2.png" alt="Detailed View" style="width: 30%;">
+  <img src="public/img/readme/m-layout3.png" alt="Profile View" style="width: 30%;">
 </div>
 
 ## Contact
