@@ -1,0 +1,185 @@
+[{
+  "_id": {
+    "$oid": "675879ba2d0c803b1aaa692e"
+  },
+  "correspandents": [
+    {
+      "$oid": "674714992f2842ab4aceacee"
+    },
+    {
+      "$oid": "6745d4876652dd4b3f7bc52a"
+    }
+  ],
+  "createdAt": "1733851578838",
+  "isRead": [
+    {
+      "id": "674714992f2842ab4aceacee",
+      "isRead": false
+    },
+    {
+      "id": "6745d4876652dd4b3f7bc52a",
+      "isRead": true
+    }
+  ],
+  "messages": []
+},
+{
+  "_id": {
+    "$oid": "67588cabc115162dc17d65e2"
+  },
+  "correspandents": [
+    {
+      "$oid": "674883c55ee62d799277601f"
+    },
+    {
+      "$oid": "6745d4876652dd4b3f7bc52e"
+    }
+  ],
+  "createdAt": "1733856427480",
+  "isRead": [
+    {
+      "id": "674883c55ee62d799277601f",
+      "isRead": true
+    },
+    {
+      "id": "6745d4876652dd4b3f7bc52e",
+      "isRead": true
+    }
+  ],
+  "messages": [
+    {
+      "author": "6745d4876652dd4b3f7bc52e",
+      "content": "מה נשמע?",
+      "createdAt": 1733856440851
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6759acb9122f98e3c3eb005c"
+  },
+  "correspandents": [
+    {
+      "$oid": "67588ec5c115162dc17d65e3"
+    },
+    {
+      "$oid": "6745d4876652dd4b3f7bc52a"
+    }
+  ],
+  "createdAt": "1733930169485",
+  "isRead": [
+    {
+      "id": "6745d4876652dd4b3f7bc52a",
+      "isRead": true
+    },
+    {
+      "id": "67588ec5c115162dc17d65e3",
+      "isRead": true
+    }
+  ],
+  "messages": [
+    {
+      "author": "67588ec5c115162dc17d65e3",
+      "content": "hi ",
+      "createdAt": 1733930195280
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6759b015122f98e3c3eb005e"
+  },
+  "correspandents": [
+    {
+      "$oid": "6745d4876652dd4b3f7bc52a"
+    },
+    {
+      "$oid": "6745d4876652dd4b3f7bc52e"
+    }
+  ],
+  "createdAt": "1733931029888",
+  "isRead": [
+    {
+      "id": "6745d4876652dd4b3f7bc52e",
+      "isRead": true
+    },
+    {
+      "id": "6745d4876652dd4b3f7bc52a",
+      "isRead": true
+    }
+  ],
+  "messages": [
+    {
+      "author": "6745d4876652dd4b3f7bc52a",
+      "content": "hy",
+      "createdAt": 1733931037375
+    },
+    {
+      "author": "6745d4876652dd4b3f7bc52e",
+      "content": "hy",
+      "createdAt": 1733931071455
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ab387ae65a51e96e68428"
+  },
+  "correspandents": [
+    {
+      "$oid": "6745d4876652dd4b3f7bc52b"
+    },
+    {
+      "$oid": "6745d4876652dd4b3f7bc52a"
+    }
+  ],
+  "createdAt": "1733997447762",
+  "isRead": [
+    {
+      "id": "6745d4876652dd4b3f7bc52a",
+      "isRead": true
+    },
+    {
+      "id": "6745d4876652dd4b3f7bc52b",
+      "isRead": true
+    }
+  ],
+  "messages": [
+    {
+      "author": "6745d4876652dd4b3f7bc52b",
+      "content": "Hi",
+      "createdAt": 1733997465223
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675afce9f671a5d10ca2595d"
+  },
+  "correspandents": [
+    {
+      "$oid": "67588ec5c115162dc17d65e3"
+    },
+    {
+      "$oid": "6745d4876652dd4b3f7bc52b"
+    }
+  ],
+  "createdAt": "1734016233599",
+  "isRead": [
+    {
+      "id": "6745d4876652dd4b3f7bc52b",
+      "isRead": true
+    },
+    {
+      "id": "67588ec5c115162dc17d65e3",
+      "isRead": true
+    }
+  ],
+  "messages": [
+    {
+      "author": "67588ec5c115162dc17d65e3",
+      "content": "hi",
+      "createdAt": 1734016243026
+    }
+  ]
+}]

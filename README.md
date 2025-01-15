@@ -42,6 +42,13 @@ Make sure you have the following installed:
     mongod
     ```
 
+   you can import demo data from data folder:
+    ```
+   1. Create a local database named `local-data`.
+   2. Create the following collections: `user`, `notification`, `post`, and `message`.
+   3. Import the corresponding JSON files from the `../insta-back-end/data` directory into their respective collections.
+    ```
+
 4. Start the backend server:
     ```
     npm run dev
