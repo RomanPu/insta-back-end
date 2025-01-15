@@ -17,7 +17,49 @@ Insta is a social network that allows you to maintain your feed and connect with
 
 ## Installation and Usage Instructions
 
-(To be added later)
+### Prerequisites
+
+Make sure you have the following installed:
+- Node.js
+- npm
+- MongoDB
+
+### Steps
+
+1. Clone the repository:
+    ```
+    git clone https://github.com/RomanPu/insta-back-end
+    git clone https://github.com/RomanPu/insta-front-end
+    ```
+
+2. Navigate to the backend folder and install dependencies:
+    ```
+    npm i
+    ```
+
+3. Start the MongoDB server. Ensure MongoDB is running on your machine:
+    ```
+    mongod
+    ```
+
+4. Start the backend server:
+    ```
+    npm run dev
+    ```
+
+    You should get a console output that the server is up and running at port 3030.
+
+5. Navigate to the frontend folder and install dependencies:
+    ```
+    npm i
+    ```
+
+6. Start the frontend server:
+    ```
+    npm run dev
+    ```
+
+    The app should be running on [http://localhost:4445/](http://localhost:4445/).
 
 ## Technical Details
 
